@@ -2,22 +2,22 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-// require('dotenv').config();
+require('dotenv').config();
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
-// const { HOST, PORT, USER, PASSWORD, DATABASE } = process.env;
+const { HOST, USER, PASSWORD, DATABASE } = process.env;
 const db = knex({
     client: 'pg',
     connection: {
-      host: 'ep-wild-dew-a1t9r2cm.ap-southeast-1.aws.neon.tech',
+      host: HOST,
       port: 5432,
-      user: 'smartbrain_owner',
-      password: 'F0OofX9beMHT',
-      database: 'smartbrain',
+      user: USER,
+      password: PASSWORD,
+      database: DATABASE,
       ssl: { rejectUnauthorized: false },
     },
 });
